@@ -1,4 +1,4 @@
-# chapter-project-repository-template
+# omdena-india-chatbot-for-admitted-patients
 Use this Repository as a template for creating Local Chapter Repositories
 
 
