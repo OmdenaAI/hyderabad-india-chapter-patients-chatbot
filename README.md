@@ -1,9 +1,4 @@
-# omdena-india-chatbot-for-admitted-patients
-Use this Repository as a template for creating Local Chapter Repositories
-
-
-# [Chapter Challenge Name]
-
+# Omdena-india-chatbot-for-admitted-patient
 
 ## Contribution Guidelines
 - Have a Look at the [project structure](#project-structure) and [folder overview](#folder-overview) below to understand where to store/upload your contribution
