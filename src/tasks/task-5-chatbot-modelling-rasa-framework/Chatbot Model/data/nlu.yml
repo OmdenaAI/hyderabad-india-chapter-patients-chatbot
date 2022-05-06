@@ -1,0 +1,36 @@
+nlu:
+- intent: greet
+  examples: |
+    - Hi
+    - Hey!
+    - Hello
+    - Hallo!
+    - I need help!
+
+- intent: Name and Email
+  examples: |
+    - Yes, my name is [john]{"entity":"Name"}.
+    - Name [john]{"entity":"Name"} and email [craig@gmail.com]{"entity":"Email"}
+    - My name is [john]{"entity":"Name"} and my email is [rassa@gmail.com]{"entity":"Email"}
+    - Email: [left@outlool.com]{"entity":"Email"} Name: [john]{"entity":"Name"}
+    - [john]{"entity":"Name"}
+    - [abc@yahoo.com]{"entity":"Email"}
+    
+
+- intent: YesNo
+  examples: |
+    - [No]{"entity":"neg"}, sorry
+    - [Yes]{"entity":"pos"}
+    - [No]{"entity":"neg"}
+    - [No]{"entity":"neg"} sorry
+    - [Ok]{"entity":"pos"}
+    - [OK]{"entity":"pos"}
+    - [Nope]{"entity":"neg"}
+
+
+- intent: Age and gender
+  examples: |
+    - 25 and M
+    - 25 and F
+    - 23, F
+    - 23, M

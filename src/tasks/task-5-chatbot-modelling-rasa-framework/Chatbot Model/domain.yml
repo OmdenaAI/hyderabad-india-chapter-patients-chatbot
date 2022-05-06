@@ -1,0 +1,74 @@
+version: '3.0'
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+intents:
+- greet
+- Name and Email
+- YesNo
+- Age and gender
+
+
+entities:
+   - Name
+   - Email
+   - neg
+   - pos
+
+slots:
+  Name:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: Name
+  Email:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: Email
+  pos:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: pos 
+    
+  neg:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: neg 
+ 
+
+
+responses:
+  utter_initial:
+  - text: |
+      Hello! This is Rasa chatbot and I will be here to assist you with any question you might have. Before that, Can I please get your name and email address?
+  utter_age_gender:
+  - text: "Thank you {Name}. Will you share information about your age and gender to better assist you?"
+  utter_yesNo:
+    - condition:
+        - type: slot
+          name: pos
+          value: yes
+      text: "Can I please get your age and gender(M/F)?"
+    - condition:
+        - type: slot
+          name: neg
+          value: no
+      text: "Ok, thank you"
+  utter_thanks:
+  - text: "Thank you {Name}."
+
+
+actions:
+- '...'
+- utter_initial
+- utter_age_gender
+- utter_yesNo
+- utter_thanks
+
+
+

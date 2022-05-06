@@ -1,0 +1,12 @@
+rules:
+ - rule: activate email form
+   steps:
+   
+   
+  
+   
+
+ - rule: submit form
+   condition:
+   - active_loop: newsletter_form
+   

@@ -1,0 +1,16 @@
+stories:
+ - story: greet
+   steps:
+   - intent: greet
+   - action: utter_initial
+   - intent: Name and Email
+   - action: utter_age_gender
+   - intent: YesNo
+   - action: utter_yesNo
+   - intent: Age and gender
+   - action: utter_thanks
+   
+
+   
+   
+
