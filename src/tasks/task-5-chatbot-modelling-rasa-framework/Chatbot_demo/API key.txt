@@ -1,0 +1,18 @@
+Dockerfile and git file should be created before following steps
+
+
+heroku login
+
+#create a heroku repo
+heroku create faq-chatbot-training-institute
+
+# Login to the container
+heroku container:login
+
+# Push the container to web
+heroku container:push web 
+
+# Make chatbot live
+heroku container:release web
+
+https://faq-chatbot-training-institute.herokuapp.com/

@@ -1,0 +1,36 @@
+{
+  "utter_faq/installation_python": [
+    {
+      "text": "Download any stable version- https://www.python.org/downloads/windows/"
+    },
+    {
+      "text": "Make sure to select the box \"add python to PATH\""
+    },
+    {
+      "text": "Go to windows search bar and Type \"Python\". If Python-version-bits shows up, you have successfully installed Python in your machine."
+    }
+  ],
+  "utter_faq/installation_anaconda": [
+    {
+      "text": "Download the anaconda software from following- https://www.anaconda.com/products/distribution"
+    },
+    {
+      "text": "click next, accept the License Agreement"
+    },
+    {
+      "text": "Select the user for whom you want to isntall the anaconda (just me or All users)"
+    },
+    {
+      "text": "Select the destination folder"
+    },
+    {
+      "text": "Add anaconda to the PATH variable and click Install."
+    },
+    {
+      "text": "After installation - if required, you may also install PyCharm from the link provided."
+    },
+    {
+      "text": "Go to windows search bar and Type \"Jupyter notebook\". If Jupyter Notebook (anaconda3) shows up, you have successfully installed Anaconda with Jupyter notebook"
+    }
+  ]
+}

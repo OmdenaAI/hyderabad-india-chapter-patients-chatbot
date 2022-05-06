@@ -1,0 +1,49 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+  - faq
+
+responses:
+  utter_greet:
+  - text: "Hey! How are you?"
+
+  utter_cheer_up:
+  - text: "Here is something to cheer you up:"
+    image: "https://i.imgur.com/nGF1K8f.jpg"
+
+  utter_did_that_help:
+  - text: "Did that help you?"
+
+  utter_happy:
+  - text: "Great, carry on!"
+
+  utter_goodbye:
+  - text: "Bye"
+
+  utter_iamabot:
+  - text: "I am a bot, powered by Rasa."
+
+  utter_faq/installation_python:
+  - text: "Download any stable version- https://www.python.org/downloads/windows/
+  \nMake sure to select the box 'add python to PATH'
+  \nGo to windows search bar and Type 'Python'. If Python-version-bits shows up, you have successfully installed Python in your machine."
+
+  utter_faq/installation_anaconda:
+  - text: "Download the anaconda software from following- https://www.anaconda.com/products/distribution
+  \nclick next, accept the License Agreement 
+  \nSelect the user for whom you want to install the anaconda (just me or All users)
+  \nSelect the destination folder
+  \nAdd anaconda to the PATH variable and click Install.
+  \nAfter installation - if required, you may also install PyCharm from the link provided.
+  \nGo to windows search bar and Type 'Jupyter notebook'. If Jupyter Notebook (anaconda3) shows up, you have successfully installed Anaconda with Jupyter notebook"
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
