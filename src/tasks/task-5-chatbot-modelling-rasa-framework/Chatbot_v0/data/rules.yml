@@ -1,0 +1,53 @@
+version: "3.1"
+
+rules:
+
+- rule: call action babies
+  steps:
+  - intent: babies_infants
+  - action: action_read_info
+
+- rule: call action common
+  steps:
+  - intent: common_symptoms
+  - action: action_read_info
+
+- rule: call action females
+  steps:
+  - intent: female_symptoms
+  - action: action_read_info
+
+- rule: call action males
+  steps:
+  - intent: male_symptoms
+  - action: action_read_info
+
+- rule: call action critical stage
+  steps:
+  - intent: critical_stage_symptoms
+  - action: action_read_info
+
+- rule: call action old people
+  steps:
+  - intent: old_people
+  - action: action_read_info
+
+- rule: call action faq
+  steps:
+  - intent: faq
+  - action: action_read_info
+
+- rule: out_of_scope
+  steps:
+  - intent: nlu_fallback
+  - action: utter_out_of_scope
+  
+- rule: Say goodbye anytime the user says goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+
+- rule: Say 'I am a bot' anytime the user challenges
+  steps:
+  - intent: bot_challenge
+  - action: utter_iamabot

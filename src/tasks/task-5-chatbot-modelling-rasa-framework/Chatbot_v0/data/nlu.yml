@@ -1,0 +1,163 @@
+version: "3.1"
+
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+
+- intent: goodbye
+  examples: |
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+
+- intent: affirm
+  examples: |
+    - yes
+    - y
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+
+- intent: mood_great
+  examples: |
+    - perfect
+    - great
+    - amazing
+    - feeling like a king
+    - wonderful
+    - I am feeling very good
+    - I am great
+    - I am amazing
+    - I am going to save the world
+    - super stoked
+    - extremely good
+    - so so perfect
+    - so good
+    - so perfect
+    - good
+
+- intent: mood_unhappy
+  examples: |
+    - my day was horrible
+    - I am sad
+    - I don't feel very well
+    - I am disappointed
+    - super sad
+    - I'm so sad
+    - sad
+    - very sad
+    - unhappy
+    - not good
+    - not very good
+    - extremly sad
+    - so saad
+    - so sad
+    - bad
+
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
+
+- intent: symptoms
+  examples: |
+    - what are the symptoms of [dengue]{"entity":"disease_condition","value":"dengue"}
+    - symptoms of [dengue]{"entity":"disease_condition","value":"dengue"}
+    - [dengue]{"entity":"disease_condition","value":"dengue"}
+    - I think i have [dengue]{"entity":"disease_condition","value":"dengue"}
+    - [covid]{"entity":"disease_condition","value":"covid"}
+    - [diabetes]{"entity":"disease_condition","value":"diabetes"}
+    - [diarrhea]{"entity":"disease_condition","value":"diarrhea"}
+    - do i have [heart diseases]{"entity":"disease_condition","value":"heart diseases"} ?
+    - [heart diseases]{"entity":"disease_condition","value":"heart diseases"}
+    - how do i know when i have [respiratory infection]{"entity":"disease_condition","value":"respiratory infection"} !
+    - [respiratory infection]{"entity":"disease_condition","value":"respiratory infection"}
+    - [diabetes]{"entity":"disease_condition","value":"diabetes"} ?
+
+# #intent for name and email
+# - intent: name_age_gender
+#   examples: |
+#     - Yes, my name is [Rajat]{"entity":"name","value":"Rajat"}.
+#     - Yes, my name is [john]{"entity":"name","value":"john"}.
+#     - Name [john]{"entity":"Name","value":"john"} and age [23]{"entity":"age","value":"23"}
+#     - My name is [john]{"entity":"Name","value":"john"} and my age is [50]{"entity":"age","value":"50"}
+#     - Age: [32]{"entity":"age","value":"32"} Gender: [Male]{"entity":"gender","value":"Male"} Name: [john]{"entity":"name","value":"john"}
+#     - My name is [Margot]{"entity":"name","value":"Margot"} and my Gender is  [female]{"entity":"gender","value":"female"}. I am [29]{"entity":"age","value":"29"} years old.
+#     - Name : [Ana]{"entity":"name","value":"Ana"} Sex: [Female]{"entity":"gender","value":"Female"} Age : [30]{"entity":"name","value":"30"}
+#     - [john]{"entity":"Name","value":"john"}
+#     - [23]{"entity":"age","value":"23"} and [M]{"entity":"gender","value":"M"}
+#     - [23]{"entity":"age","value":"23"} and [F]{"entity":"gender","value":"F"}
+#     - [22]{"entity":"age","value":"22"}, [Female]{"entity":"gender","value":"Female"}
+#     - [21]{"entity":"age","value":"22"}, [Male]{"entity":"gender","value":"Female"}
+
+
+- intent: babies_infants
+  examples: |
+    - babies and infants
+
+- intent: common_symptoms
+  examples: |
+    - common symptoms
+
+- intent: female_symptoms
+  examples: |
+    - female symptoms
+
+- intent: male_symptoms
+  examples: |
+    - male symptoms
+
+- intent: old_people
+  examples: |
+    - old people symptoms
+
+- intent: critical_stage_symptoms
+  examples: |
+    - critical stage symptoms
+
+- intent: faq
+  examples: |
+    - faq
+
+- intent: out_of_scope
+  examples: |
+    - who is the president of india?
+    - who am i?
+    - You are dumb.
+    - 3+3
+
+
+
