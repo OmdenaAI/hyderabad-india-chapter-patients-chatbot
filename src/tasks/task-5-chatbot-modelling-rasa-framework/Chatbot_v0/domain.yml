@@ -1,0 +1,83 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+  - symptoms:
+      use_entities:
+        - disease_condition
+  - babies_infants
+  - common_symptoms
+  - male_symptoms
+  - female_symptoms
+  - critical_stage_symptoms
+  - old_people
+  - faq
+  - out_of_scope
+
+entities:
+  - disease_condition
+
+
+slots:
+  disease_condition:
+    type: text
+    mappings:
+    - type : from_entity
+      entity : disease_condition
+    influence_conversation: false
+
+responses:
+  utter_greet:
+  - text: "Hey! How are you?"
+
+  utter_cheer_up:
+  - text: "Here is something to cheer you up:"
+    image: "https://i.imgur.com/nGF1K8f.jpg"
+
+  utter_did_that_help:
+  - text: "Did that help you?"
+
+  utter_happy:
+  - text: "Great, carry on!"
+
+  utter_goodbye:
+  - text: "Bye"
+
+  utter_iamabot:
+  - text: "I am a bot, powered by Rasa. You can ask me your querries regarding specific diseases."
+
+  utter_permission:
+  - text: "Select:"
+    buttons:
+    - "title": "Information for Babies/Infants"
+      "payload": "/babies_infants"
+    - "title": "Information for Old People"
+      "payload": "/old_people"
+    - "title": "Information for Critical Stage of the disease"
+      "payload": "/critical_stage_symptoms"
+    - "title": "Information specific to males"
+      "payload": "/male_symptoms"
+    - "title": "Information specific to females"
+      "payload": "/female_symptoms"
+    - "title": "Common Information about the disease"
+      "payload": "/common_symptoms"
+    - "title": "Frequently Asked Questions about the disease"
+      "payload": "/faq"
+
+
+  utter_sorry_to_hear_that:
+  - text: "So sorry to hear that. I hope you have great day ahead. How can I help you with?"
+
+  utter_out_of_scope:
+  - text: "Sorry! I did not get what you said. Please rephrase and try again."
+actions:
+  - action_read_info
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
