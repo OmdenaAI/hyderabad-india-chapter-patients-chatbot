@@ -2,10 +2,11 @@ version: "3.0"
 
 rules:
 
-- rule: respond to FAQs
-  steps:
-  - intent: faq
-  - action: DbQueryingMethods
+# - rule: respond to condition_symptoms
+#   steps:
+#   - intent: condition_symptoms
+#   - action: utter_condition_symptoms
+#   - action: action_return_symptoms
 
 - rule: Say goodbye anytime the user says goodbye
   steps:

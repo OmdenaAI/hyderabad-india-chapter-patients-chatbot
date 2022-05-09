@@ -1,71 +1,75 @@
-version: "3.0"
-
-intents:
-  - greet
-  - goodbye
-  - affirm
-  - deny
-  - mood_great
-  - mood_unhappy
-  - bot_challenge
-  - faq
-    use_entities: true
-
-entities:
-- condition
-
-slots:
-  condition:
-    type: rasa.shared.core.slots.TextSlot
-    initial_value: null
-    auto_fill: true
-    influence_conversation: false
-
-responses:
-  utter_greet:
-  - text: "Hey! How are you?"
-
-  utter_cheer_up:
-  - text: "Here is something to cheer you up:"
-    image: "https://i.imgur.com/nGF1K8f.jpg"
-
-  utter_did_that_help:
-  - text: "Did that help you?"
-
-  utter_happy:
-  - text: "Great, carry on!"
-
-  utter_goodbye:
-  - text: "Bye"
-
-  utter_iamabot:
-  - text: "I am a bot, powered by Rasa."
-
-  utter_ask_age_group:
-  - text: "Please select the category for which you want to view the symptoms of ?"
-    buttons: 
-      - title: "common"
-        payload: "Symptoms(common)"
-      - title: "babies/infants"
-        payload: "Symptoms(babies/infants)"
-      - title: "old people"
-        payload: "Symptoms(old people)"
-      - title: "male"
-        payload: "Symptoms(male)"
-      - title: "female"
-        payload: "Symptoms(female)"
-      - title: "critical_stage"
-        payload: "Symptoms (critical_stage)"
-
-  
-
-actions:
-- '...'
-- query_resource
-- utter_ask_age_group
-- utter_greet
-- utter_iamabot
-
+version: '3.0'
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
+intents:
+- greet
+- condition_symptoms
+- goodbye
+- affirm
+- deny
+- mood_great
+- mood_unhappy
+- bot_challenge
+entities:
+- condition
+- symptom
+slots:
+  condition:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: condition
+      intent: condition_symptoms
+  symptom:
+    type: categorical
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: symptom
+      intent: condition_symptoms
+    values:
+    - symptoms
+    - common
+    - male
+    - female
+    - old people
+    - critical_stage
+    - babies/infants
+responses:
+  utter_greet:
+  - text: Hey! I can help you with FAQs for admitted patients.
+  utter_cheer_up:
+  - text: 'Here is something to cheer you up:'
+    image: https://i.imgur.com/nGF1K8f.jpg
+  utter_did_that_help:
+  - text: Did that help you?
+  utter_happy:
+  - text: Great, carry on! Let me know if you need anything else.
+  utter_goodbye:
+  - text: Bye
+  utter_iamabot:
+  - text: I am a bot, powered by Rasa.
+  utter_condition_symptoms:
+  - text: Please select the category for which you want to view the symptoms of {condition}?
+    buttons:
+    - title: common
+      payload: /condition_symptoms{{"symptom":"common"}}
+    - title: babies or infants
+      payload: /condition_symptoms{{"symptom":"babies/infants"}}
+    - title: old people
+      payload: /condition_symptoms{{"symptom":"old people"}}
+    - title: male
+      payload: /condition_symptoms{{"symptom":"male"}}
+    - title: female
+      payload: /condition_symptoms{{"symptom":"female"}}
+    - title: critical_stage
+      payload: /condition_symptoms{{"symptom":"critical_stage"}}
+actions:
+- action_return_symptoms
+- utter_cheer_up
+- utter_condition_symptoms
+- utter_goodbye
+- utter_greet
+- utter_happy

@@ -2,29 +2,87 @@ version: "3.0"
 
 stories:
 
-- story: happy path
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_great
-  - action: utter_happy
+# - story: happy path
+#   steps:
+#   - intent: greet
+#   - action: utter_greet
+#   - intent: condition_symptoms
+#     # entities:
+#     # - condtion: dengue
+#     # - symptom: common
+#   - action: utter_condition_symptoms
+#     # entities:
+#     # - condtion: dengue
+#     # - symptom: common
+#   - intent: condition_symptoms
+#     # entities:
+#     # - condtion: dengue
+#     # - symptom: common
+#   - action: action_return_symptoms
+
 
 - story: sad path 1
   steps:
   - intent: greet
   - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
+  - checkpoint: check_asked_question
+
+# - story: sad path 2
+#   steps:
+#   - intent: greet
+#   - action: utter_greet
+#   - intent: mood_unhappy
+#   - action: utter_cheer_up
+#   - action: utter_did_that_help
+#   - intent: deny
+#   - action: utter_goodbye
+
+
+- story: interactive_story_1
+  steps:
+  - checkpoint: check_asked_question
+  - intent: condition_symptoms
+    entities:
+    - symptom: symptoms
+    - condition: dengue
+  - slot_was_set:
+    - condition: dengue
+  - slot_was_set:
+    - symptom: symptoms
+  - action: utter_condition_symptoms
+  - intent: condition_symptoms
+    entities:
+    - symptom: common
+  - slot_was_set:
+    - symptom: common
+  - action: action_return_symptoms 
   - action: utter_did_that_help
   - intent: affirm
+  - checkpoint: check_flow_finished
+
+
+- story: Process ends
+  steps:
+  - checkpoint: check_flow_finished
   - action: utter_happy
 
-- story: sad path 2
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - intent: deny
-  - action: utter_goodbye
+# - story: interactive_story_1
+#   steps:
+#   - intent: greet
+#   - action: utter_greet
+#   - intent: condition_symptoms
+#     entities:
+#     - symptom: symptoms
+#     - condition: heart diseases
+#   - slot_was_set:
+#     - condition: heart diseases
+#   - slot_was_set:
+#     - symptom: symptoms
+#   - action: utter_condition_symptoms
+#   - intent: condition_symptoms
+#     entities:
+#     - symptom: female
+#   - slot_was_set:
+#     - symptom: female
+#   - action: action_return_symptoms
+#   - action: utter_goodbye

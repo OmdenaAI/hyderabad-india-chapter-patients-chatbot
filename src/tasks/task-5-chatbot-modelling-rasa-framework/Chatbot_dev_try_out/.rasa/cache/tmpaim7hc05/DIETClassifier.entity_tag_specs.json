@@ -1,0 +1,28 @@
+[
+  {
+    "tag_name": "entity",
+    "ids_to_tags": {
+      "1": "B-condition",
+      "2": "I-condition",
+      "3": "L-condition",
+      "4": "U-condition",
+      "5": "B-symptom",
+      "6": "I-symptom",
+      "7": "L-symptom",
+      "8": "U-symptom",
+      "0": "O"
+    },
+    "tags_to_ids": {
+      "B-condition": 1,
+      "I-condition": 2,
+      "L-condition": 3,
+      "U-condition": 4,
+      "B-symptom": 5,
+      "I-symptom": 6,
+      "L-symptom": 7,
+      "U-symptom": 8,
+      "O": 0
+    },
+    "num_tags": 9
+  }
+]

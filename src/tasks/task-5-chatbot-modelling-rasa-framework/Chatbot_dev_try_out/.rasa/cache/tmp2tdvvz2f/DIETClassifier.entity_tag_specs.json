@@ -1,0 +1,20 @@
+[
+  {
+    "tag_name": "entity",
+    "ids_to_tags": {
+      "1": "B-condition",
+      "2": "I-condition",
+      "3": "L-condition",
+      "4": "U-condition",
+      "0": "O"
+    },
+    "tags_to_ids": {
+      "B-condition": 1,
+      "I-condition": 2,
+      "L-condition": 3,
+      "U-condition": 4,
+      "O": 0
+    },
+    "num_tags": 5
+  }
+]

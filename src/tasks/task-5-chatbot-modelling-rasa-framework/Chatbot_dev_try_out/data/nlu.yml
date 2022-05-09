@@ -1,5 +1,4 @@
 version: "3.0"
-
 nlu:
 - intent: greet
   examples: |
@@ -16,7 +15,6 @@ nlu:
     - goodmorning
     - goodevening
     - good afternoon
-
 - intent: goodbye
   examples: |
     - cu
@@ -29,7 +27,6 @@ nlu:
     - see you around
     - bye bye
     - see you later
-
 - intent: affirm
   examples: |
     - yes
@@ -38,7 +35,6 @@ nlu:
     - of course
     - that sounds good
     - correct
-
 - intent: deny
   examples: |
     - no
@@ -48,7 +44,6 @@ nlu:
     - don't like that
     - no way
     - not really
-
 - intent: mood_great
   examples: |
     - perfect
@@ -65,7 +60,6 @@ nlu:
     - so so perfect
     - so good
     - so perfect
-
 - intent: mood_unhappy
   examples: |
     - my day was horrible
@@ -82,25 +76,33 @@ nlu:
     - extremly sad
     - so saad
     - so sad
-
 - intent: bot_challenge
   examples: |
     - are you a bot?
     - are you a human?
     - am I talking to a bot?
     - am I talking to a human?
-
-- intent: faq/condition_symptoms
+- intent: condition_symptoms
   examples: |
-    - what are the symptoms of [dengue](condition)
-    - symptoms of [dengue](condition)
-    - [dengue](condition)
+    - what are the [common symptoms](symptom) of [dengue](condition)
+    - [symptoms](symptom) of [heart diseases](condition)
+    - [symptoms](symptom) of [respiratory infection](condition)
+    - [symptoms](symptom) of [diarrhea](condition)
+    - [symptoms](symptom) of [diabetes](condition)
+    - [symptoms in babies](symptom) of [dengue](condition)
+    - [baby symptoms](symptom) [dengue](condition)
     - I think i have [dengue](condition)
-    - [covid](condition)
-    - [diabetes](condition)
-    - [diarrhea](condition)
-    - do i have [heart diseases](condition) ?
-    - [heart diseases](condition)
-    - how do i know when i have [respiratory infection](condition) !
-    - [respiratory infection](condition)
-    - [diabetes](condition) ?
+    - [old people symptoms](symptom) [covid](condition)
+    - [diabetes](condition) in [old people](symptom)
+    - [diarrhea](condition) in [male] (symptom)
+    - do i have [heart diseases](condition) ? tell me some [symptoms in female](symptom)
+    - do i have [heart diseases](condition) ? tell me some [symptoms in male](symptom)
+    - [symptoms in female](symptom) for [heart diseases](condition)
+    - [symptoms in male](symptom) for [heart diseases](condition)
+    - how do i know when i have [critical stage](symptom) symptoms for [respiratory infection](condition) !
+    - [critical stage](symptom) symptoms for [respiratory infection](condition)
+    - [critical stage](symptom) symptoms for [diabetes](condition) ?
+    - what are the symptoms of [dengue](condition)?
+    - [symptoms](symptom) of [dengue](condition)?
+    - [symptoms](symptom) of [diabetes](condition)?
+    - [symptoms](symptom) of [heart diseases](condition)?
