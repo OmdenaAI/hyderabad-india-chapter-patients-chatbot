@@ -1,0 +1,86 @@
+stories:
+ - story: greet
+   steps:
+   - intent: greet
+   - action: utter_initial
+   - intent: Name
+   - action: utter_ask_age
+   
+
+ - story: infant
+   steps:
+   - intent: Infant
+   - action: utter_help
+   - checkpoint: check_category
+
+ - story: common
+   steps:
+   - intent: Common
+   - action: utter_help 
+   - checkpoint: check_category
+  
+ - story: old
+   steps:
+   - intent: Old
+   - action: utter_help 
+   - checkpoint: check_category
+   
+
+ - story: symptoms
+   steps:
+   - checkpoint: check_category
+   - intent: Symptoms
+   - action: action_symptoms
+   
+   
+ - story: medication
+   steps:
+   - checkpoint: check_category
+   - intent: Medication
+   - action: action_medication
+
+ - story: treatment
+   steps:
+   - checkpoint: check_category
+   - intent: Treatment
+   - action: action_treatment
+
+ - story: expense
+   steps:
+   - checkpoint: check_category
+   - intent: Expense
+   - action: action_expense
+   
+
+ - story: yes
+   steps:
+   - intent: Yes
+   - checkpoint: check_category
+
+ - story: no
+   steps:
+   - checkpoint: check_no
+   - intent: No
+   - action: utter_rasa
+   - checkpoint: check_flow_end
+
+ - story: thanks
+   steps:
+   - intent: Thanks
+   - action: utter_ok
+   - checkpoint: check_no
+
+
+ - story: faqs
+   steps:
+   - intent: FAQs
+   - action: action_answer_FAQ
+
+ - story: goodbye
+   steps:
+   - checkpoint: check_flow_end
+   - intent: Goodbye
+   - action: utter_bye
+   
+
+ 

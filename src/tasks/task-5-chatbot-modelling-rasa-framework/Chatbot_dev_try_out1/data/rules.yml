@@ -1,0 +1,13 @@
+rules:
+ - rule: activate greet
+   steps:
+    - action: utter_initial
+   
+   
+  
+   
+
+ - rule: submit form
+   condition:
+   - active_loop: newsletter_form
+   
