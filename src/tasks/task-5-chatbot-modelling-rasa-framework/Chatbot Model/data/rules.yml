@@ -1,6 +1,7 @@
 rules:
- - rule: activate email form
+ - rule: activate greet
    steps:
+    - action: utter_initial
    
    
   

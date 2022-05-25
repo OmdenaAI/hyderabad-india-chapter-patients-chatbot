@@ -1,4 +1,49 @@
 nlu:
+- synonym: symptoms
+  examples: |
+    - indicator
+    - sign
+    - feature
+    - mark
+    - trait
+    - indication
+    - symptms
+    - sumptoms
+    - smptms
+    - symptomss
+    - feeling
+    - feels
+
+- synonym: medication
+  examples: |
+    - prevention
+    - medicine
+    - medicate
+    - cure
+    - medicinal
+    - pharmaceutical
+    - remedy
+    - remedial
+    - remedies
+    - cures
+    - get better
+    - feel better
+
+- synonym: treatment
+  examples: |
+    - treat
+    - treating
+    - treated
+    - surgery
+    - medicaments
+    - therapy
+
+- synonym: survival
+  examples: |
+    - chance of living
+    - living
+    - live
+
 - intent: greet
   examples: |
     - Hi
@@ -7,30 +52,155 @@ nlu:
     - Hallo!
     - I need help!
 
-- intent: Name and Email
+- intent: Name
   examples: |
-    - Yes, my name is [john]{"entity":"Name"}.
-    - Name [john]{"entity":"Name"} and email [craig@gmail.com]{"entity":"Email"}
-    - My name is [john]{"entity":"Name"} and my email is [rassa@gmail.com]{"entity":"Email"}
-    - Email: [left@outlool.com]{"entity":"Email"} Name: [john]{"entity":"Name"}
+    - Yes, this is [john]{"entity":"Name"}
+    - It is [john]{"entity":"Name"}
+    - Sure, [john]{"entity":"Name"}
     - [john]{"entity":"Name"}
-    - [abc@yahoo.com]{"entity":"Email"}
+    - name is [steven]{"entity":"Name"}
+    - my name is [kartik]{"entity":"Name"}
+    - I am called [stark]{"entity":"Name"}
+    - this is [stark]{"entity":"Name"} here
+    - call me [stark]{"entity":"Name"}
+    - you can call me [stark]{"entity":"Name"}
+    - My name is [captain]{"entity":"Name"}
+    - [stark]{"entity":"Name"} is my name
+    - [roger]{"entity":"Name"} it is 
+    - [stark]{"entity":"Name"} is my name
+    - [peter]{"entity":"Name"} it is
+    - Sure [thor]{"entity":"Name"}
+    - Sure [mark]{"entity":"Name"}
+    - Sure, [mark]{"entity":"Name"}
+    - name is [mark]{"entity":"Name"}
+    - it is [mark]{"entity":"Name"}
+  
+
+- intent: Infant
+  examples: |
+    - [infant]{"entity":"age"}
+    - [Infant]{"entity":"age"}
     
 
-- intent: YesNo
+- intent: Common
   examples: |
-    - [No]{"entity":"neg"}, sorry
-    - [Yes]{"entity":"pos"}
-    - [No]{"entity":"neg"}
-    - [No]{"entity":"neg"} sorry
-    - [Ok]{"entity":"pos"}
-    - [OK]{"entity":"pos"}
-    - [Nope]{"entity":"neg"}
+    - [adult]{"entity":"age"}
+    - [Adult]{"entity":"age"}
+    
+
+- intent: Old
+  examples: |
+    - [old]{"entity":"age"}
+    - [Old]{"entity":"age"}
+
+- intent: Yes
+  examples: |
+    - yes
+    - Yes
+    - yaa
+    - yup
+    - Sure yeah
+    - yeah
+    
+
+- intent: No
+  examples: |
+    - no
+    - No
+    - naah
+    - nope
+    - no that's all
+    - that's all
 
 
-- intent: Age and gender
+- intent: Symptoms
   examples: |
-    - 25 and M
-    - 25 and F
-    - 23, F
-    - 23, M
+    - What are [symptoms]{"entity":"symptoms"} of [covid]{"entity":"disease"}?
+    - I need information about [symptoms]{"entity":"symptoms"} of [covid]{"entity":"disease"}
+    - [symptoms]{"entity":"symptoms"} of [heart]{"entity":"disease"} attack
+    - what do you [feel]{"entity":"symptoms"} when you have [dengue]{"entity":"disease"}
+    - Can you tell [signs]{"entity":"symptoms"} of having [respiratory disease]{"entity":"disease"}?
+    - What are the [signs]{"entity":"symptoms"} of having [respiratory disease]{"entity":"disease"}?
+    - How does one [feel]{"entity":"symptoms"} in [covid]{"entity":"disease"}?
+
+- intent: Medication
+  examples: |
+    - What [medication]{"entity":"medication"} is required for [covid]{"entity":"disease"}?
+    - I need information about [medicines]{"entity":"medication"} of [dengue]{"entity":"disease"}
+    - what is the [medication]{"entity":"medication"} for [diabetes]{"entity":"disease"}?
+    - could you describe some [medicines]{"entity":"medication"} needed for [diabetes]{"entity":"disease"}?
+    
+- intent: Expense
+  examples: |
+    - what is the expense of treatment for [covid]{"entity":"disease"}?
+    - what is the cost of treating [covid]{"entity":"disease"}?
+    - Cost of curing [covid]{"entity":"disease"}?
+    - expense for [covid]{"entity":"disease"}?
+    - how much money is required for treating [covid]{"entity":"disease"}?
+    - expense for treatment of [covid]{"entity":"disease"}?
+    - cost for treatment of [covid]{"entity":"disease"}?
+    - how expensive it is to treat [diabetes]{"entity":"disease"}?
+
+- intent: Treatment
+  examples: |
+    - what is the treatment for [covid]{"entity":"disease"}?
+    - what is the treatment for [diabetes]{"entity":"disease"}?
+    - what treatment is required for [heart disease]{"entity":"disease"}?
+    - How do you treat [diabetes]{"entity":"disease"}?
+    - what is the cure for [diabetes]{"entity":"disease"}?
+    - how can we cure [diabetes]{"entity":"disease"}?
+    - how to cure [diabetes]{"entity":"disease"}?
+
+- intent: Survival
+  examples: |
+    - What are the chances of surviving [covid]{"entity":"disease"}?
+    - how much can i live with [dengue]{"entity":"disease"}?
+    - how long can i last with [respiratory disease]{"entity":"disease"}?
+    - how much chance do i have for surviving [diabetes]{"entity":"disease"}?
+
+- intent: Prevent
+  examples: |
+    - How to prevent [covid]{"entity":"disease"}?
+    - what are the preventive measures for [dengue]{"entity":"disease"}?
+    - What are the prevention methods [heart]{"entity":"disease"}?
+    - What are the preventive methods [respiratory]{"entity":"disease"}?
+    - how to avoid it?
+    - what steps can be taken to avoid [covid]{"entity":"disease"}
+    - How this disease can be avoided?
+    - how [heart]{"entity":"disease"} related disease can be avoided?
+    - how [covid]{"entity":"disease"} can be prevented?
+
+- intent: FAQs
+  examples: |
+    - What should my blood sugar be?
+    - What is an A1c?
+    - What is Diabetes Mellites? How do you get it?
+    - What are the complications of Diabetes Mellitus?
+
+
+- intent: Goodbye
+  examples: |
+    - Bye
+    - See you
+    - Thanks bye
+    - Ok bye
+    - goodbye
+    - bye thank you
+    - bbye
+    - bye bye
+
+- intent: Thanks
+  examples: |
+    - ok thank you
+    - thanks
+    - thanks ok
+    - thank you ok
+    - hanks
+    - thanks very much
+    - ok thanks
+    - sure thanks
+
+
+    
+
+    

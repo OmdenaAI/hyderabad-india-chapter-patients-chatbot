@@ -4,16 +4,34 @@ session_config:
   carry_over_slots_to_new_session: true
 intents:
 - greet
-- Name and Email
-- YesNo
-- Age and gender
+- Name
+- Symptoms
+- Infant
+- Common
+- Old
+- Medication
+- Treatment
+- Expense
+- Yes
+- No
+- Survival
+- Prevent
+- Thanks
+- FAQs
+- Goodbye
 
 
 entities:
    - Name
-   - Email
-   - neg
-   - pos
+   - symptoms
+   - disease
+   - age
+   - medication
+   - yes
+   - no
+  
+   
+
 
 slots:
   Name:
@@ -22,53 +40,100 @@ slots:
     mappings:
     - type: from_entity
       entity: Name
-  Email:
-    type: text
-    influence_conversation: false
-    mappings:
-    - type: from_entity
-      entity: Email
-  pos:
+  
+  symptoms:
     type: text
     mappings:
     - type: from_entity
-      entity: pos 
-    
-  neg:
+      entity: symptoms 
+  
+  disease:
+    type: categorical
+    values:
+      - covid
+      - dengue
+    mappings:
+    - type: from_entity
+      entity: disease 
+  
+  medication:
     type: text
     mappings:
     - type: from_entity
-      entity: neg 
- 
+      entity: medication 
+  
+  survival:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: Survival
 
+  age:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: age 
+
+  yes:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: yes
+
+  no:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: no 
+
+  
 
 responses:
   utter_initial:
   - text: |
-      Hello! This is Rasa chatbot and I will be here to assist you with any question you might have. Before that, Can I please get your name and email address?
-  utter_age_gender:
-  - text: "Thank you {Name}. Will you share information about your age and gender to better assist you?"
-  utter_yesNo:
-    - condition:
-        - type: slot
-          name: pos
-          value: yes
-      text: "Can I please get your age and gender(M/F)?"
-    - condition:
-        - type: slot
-          name: neg
-          value: no
-      text: "Ok, thank you"
-  utter_thanks:
-  - text: "Thank you {Name}."
+      Hello! This is Rasa powered chatbot called MediBot and I will be here to assist you with any question you might have. Before that, Can I please get your name?
+  utter_ask_age:
+  - text: "Thank you {Name}. Please select an age group to better assist you."
+    buttons:
+    - title: "Infant - Age below 5 "
+      payload: '/Infant{"age":"infant"}'
+    - title: "Common - Age 6-60"
+      payload: '/Common{"age":"adult"}'
+    - title: "Old - Age 60 and above"
+      payload: '/Old{"age":"old"}'
 
+  utter_help:
+  - text: "How can I help?"
+  
+  utter_ask_more:
+  - text: "Do you need more information on {disease}?"
+
+  utter_ok:
+  - text: "Ok, would you like to know anything else?"
+
+  utter_bye:
+  - text: "Bye!"
+  
+  utter_rasa:
+  - text: "Hope Medibot was able to help you out. :)"
 
 actions:
 - '...'
 - utter_initial
-- utter_age_gender
-- utter_yesNo
-- utter_thanks
+- utter_ask_age
+- utter_help
+- utter_symptoms
+- action_symptoms
+- action_medication
+- action_treatment
+- action_expense
+- action_survival
+- action_prevent
+- utter_ask_more
+- utter_ok
+- action_answer_FAQ
+- utter_bye
+- utter_rasa
 
 
 
