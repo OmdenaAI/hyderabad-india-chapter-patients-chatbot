@@ -14,17 +14,16 @@ from urllib import response
 
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
+from rasa_sdk.events import Restarted
 import pandas as pd
 import numpy as np
-import csv
-import io
 import requests
 
 #github repository where csv data is located
 url = "https://raw.githubusercontent.com/OmdenaAI/hyderabad-india-chapter-patients-chatbot/main/src/data/raw_data/FINAL1.csv?token=GHSAT0AAAAAABT3D53T2INUCPMSSWNCECEMYT7ITMA"
 d = requests.get(url).content
 #df = pd.read_csv(io.StringIO(d.decode('utf-8')))
-df= pd.read_csv(r"C:/Everything On This PC/Udacity/Chatbot Omdena Hyderabad/MediBot.csv", encoding='utf-8')
+df= pd.read_csv(url, encoding='utf-8')
 
 class ActionSymptoms(Action):
 
@@ -36,10 +35,11 @@ class ActionSymptoms(Action):
              domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
         
-        disease =  tracker.get_slot('disease')
+        disease_slot =  tracker.get_slot('disease')
         obj = disease_identifier()
-        disease = obj.disease_track(disease)
+        disease = obj.disease_track(disease_slot)
         intentAge = tracker.get_slot('age')
+        print(f'disease name is {disease}')
 
         #creating a object for class having the tex_ext function
         obj = text_treatment()
@@ -49,25 +49,25 @@ class ActionSymptoms(Action):
         #checking if the user has provided the name of disease
         if disease is not None:
 
-            df = df[df['condition'] == disease]
-
+            df_symp = df[df['condition'] == disease]
+            
             #getting symptoms for infants
             if intentAge == "infant":
                 
-                out = df['Symptoms(babies/infants)'].to_json(orient='records')[1:-1].replace('["', '')
+                out = df_symp['Symptoms(babies/infants)'].to_json(orient='records')[1:-1].replace('["', '')
                 out = obj.text_ext(out)
-            
+                
             #getting symptoms in general
             elif intentAge == "adult":
                 
-                out = df['Symptoms(common)'].to_json(orient='records')[1:-1].replace('["', '')
+                out = df_symp['Symptoms(common)'].to_json(orient='records')[1:-1].replace('["', '')
                 out = obj.text_ext(out)
-                
+                print(out)
                 #getting symptoms for male
-                if df['Symptoms(male)'].isnull().values.all():
+                if df_symp['Symptoms(male)'].isnull().values.all():
                     pass
                 else:
-                    outM = df['Symptoms(male)'].to_json(orient='records')[1:-1].replace('["', '')
+                    outM = df_symp['Symptoms(male)'].to_json(orient='records')[1:-1].replace('["', '')
                     outM = obj.text_ext(outM)
                     dispatcher.utter_message("Few symptoms of " + disease + " in Men are: \n")
                     for itemM in outM:
@@ -78,10 +78,10 @@ class ActionSymptoms(Action):
 
 
                 #getting symptoms for female
-                if df['Symptoms(female)'].isnull().values.all():
+                if df_symp['Symptoms(female)'].isnull().values.all():
                     pass
                 else:
-                    outF = df['Symptoms(female)'].to_json(orient='records')[1:-1].replace('["', '')
+                    outF = df_symp['Symptoms(female)'].to_json(orient='records')[1:-1].replace('["', '')
                     outF = obj.text_ext(outF)
                     
                     dispatcher.utter_message("Few symptoms of " + disease + " in Women are: \n")
@@ -93,14 +93,18 @@ class ActionSymptoms(Action):
 
             #getting symptoms for old people
             else:
-                out = df['Symptoms(old people)'].to_json(orient='records')[1:-1].replace('["', '')
+                out = df_symp['Symptoms(old people)'].to_json(orient='records')[1:-1].replace('["', '')
                 out = obj.text_ext(out)
 
-            #display general symptoms for this age group
-            dispatcher.utter_message("Few common symptoms of " + disease + " are: \n")
             
-            for item in out:
-                dispatcher.utter_message("- " + item + "\n")
+            
+            if len(out) ==0:
+                dispatcher.utter_message("No data avialable")
+            else:
+                #display general symptoms for this age group
+                dispatcher.utter_message("Few common symptoms of " + disease + " are: \n")
+                for item in out:
+                    dispatcher.utter_message("- " + item + "\n")
 
         #If the user has not provided the name of the disease it will display following message
         else:
@@ -131,25 +135,30 @@ class ActionMedication(Action):
         
         if disease is not None:
 
-            df = df[df['condition'] == disease]
+            df_med = df[df['condition'] == disease]
         
 
             if intentAge == "infant":
-                out = df['Medication(babies/infants)'].to_json(orient='records')[1:-1].replace('["', '')
+                out = df_med['Medication(babies/infants)'].to_json(orient='records')[1:-1].replace('["', '')
                 out = obj.text_ext(out)
                 
             elif intentAge == "adult":
-                out = df['Medication(general)'].to_json(orient='records')[1:-1].replace('["', '')
+                out = df_med['Medication(general)'].to_json(orient='records')[1:-1].replace('["', '')
                 out = obj.text_ext(out)
                 
             else:
-                out = df['Medication(old people)'].to_json(orient='records')[1:-1].replace('["', '')
+                out = df_med['Medication(old people)'].to_json(orient='records')[1:-1].replace('["', '')
                 out = obj.text_ext(out)
 
-            dispatcher.utter_message("Some medication for " + disease + " are: \n")
+            
+ 
+            if len(out) ==0:
+                dispatcher.utter_message("No data avialable")
+            else:
+                dispatcher.utter_message("Some medication for " + disease + " are: \n")
 
-            for item in out:    
-                dispatcher.utter_message("- " + item + "\n")
+                for item in out:    
+                    dispatcher.utter_message("- " + item + "\n")
 
         else:
             dispatcher.utter_message("No disease specified. Please specify a disease.")
@@ -167,10 +176,10 @@ class ActionTreatment(Action):
              tracker: Tracker,
              domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        disease =  tracker.get_slot('disease')
+        disease_slot =  tracker.get_slot('disease')
         #creating a disease identifier object which will identify the disease name from what user types 
         obj = disease_identifier()
-        disease = obj.disease_track(disease)
+        disease = obj.disease_track(disease_slot)
         intentAge = tracker.get_slot('age')
         
         #creating a object for class having the tex_ext function
@@ -180,25 +189,29 @@ class ActionTreatment(Action):
         
         if disease is not None:
 
-            df = df[df['condition'] == disease]
+            df_treat = df[df['condition'] == disease]
         
 
             if intentAge == "infant":
-                out = df['Treatment(babies/infants)'].to_json(orient='records')[1:-1].replace('["', '')
+                out = df_treat['Treatment(babies/infants)'].to_json(orient='records')[1:-1].replace('["', '')
                 out = obj.text_ext(out)
                 
             elif intentAge == "adult":
-                out = df['Treatment(general)'].to_json(orient='records')[1:-1].replace('["', '')
+                out = df_treat['Treatment(general)'].to_json(orient='records')[1:-1].replace('["', '')
                 out = obj.text_ext(out)
                 
             else:
-                out = df['Treatment(old people)'].to_json(orient='records')[1:-1].replace('["', '')
+                out = df_treat['Treatment(old people)'].to_json(orient='records')[1:-1].replace('["', '')
                 out = obj.text_ext(out)
 
-            dispatcher.utter_message("Some treatments for " + disease + " are: \n")
+            
 
-            for item in out:    
-                dispatcher.utter_message("- " + item + "\n")
+            if len(out) ==0:
+                dispatcher.utter_message("No data avialable")
+            else:
+                dispatcher.utter_message("Some treatments for " + disease + " are: \n")
+                for item in out:    
+                    dispatcher.utter_message("- " + item + "\n")
 
         else:
             dispatcher.utter_message("No disease specified. Please specify a disease.")
@@ -229,15 +242,18 @@ class ActionExpense(Action):
         
         if disease is not None:
 
-            df = df[df['condition'] == disease]
+            df_exp = df[df['condition'] == disease]
         
-            out = df['Expenses'].to_json(orient='records')[1:-1].replace('["', '')
+            out = df_exp['Expenses'].to_json(orient='records')[1:-1].replace('["', '')
             out = obj.text_ext(out) #using the function that cleans and extracts the data from json file
                 
-            dispatcher.utter_message("Though expenses can vary, here is an estimate: \n")
-
-            for outcome in out:
-                dispatcher.utter_message("- " + outcome + "\n")
+            
+            if len(out) ==0:
+                dispatcher.utter_message("No data avialable")
+            else:
+                dispatcher.utter_message("Though expenses can vary, here is an estimate: \n")
+                for outcome in out:
+                    dispatcher.utter_message("- " + outcome + "\n")
 
         else:
             dispatcher.utter_message("No disease specified. Please specify a disease.")
@@ -266,15 +282,18 @@ class ActionSurvival(Action):
         
         if disease is not None:
 
-            df = df[df['condition'] == disease]
+            df_sur = df[df['condition'] == disease]
         
-            out = df['Survival_Rate'].to_json(orient='records')[1:-1].replace('["', '')
+            out = df_sur['Survival_Rate'].to_json(orient='records')[1:-1].replace('["', '')
             out = obj.text_ext(out) #using the function that cleans and extracts the data from json file
                 
-            dispatcher.utter_message("Survival rate prediction: \n")
-
-            for outcome in out:
-                dispatcher.utter_message("- " + outcome + "\n")
+            
+            if len(out) ==0:
+                dispatcher.utter_message("No data avialable")
+            else:
+                dispatcher.utter_message("Survival rate prediction: \n")
+                for outcome in out:
+                    dispatcher.utter_message("- " + outcome + "\n")
 
         else:
             dispatcher.utter_message("No disease specified. Please specify a disease.")
@@ -303,15 +322,18 @@ class ActionPrevent(Action):
         
         if disease is not None:
 
-            df = df[df['condition'] == disease]
+            df_pre = df[df['condition'] == disease]
         
-            out = df['Prevention'].to_json(orient='records')[1:-1].replace('["', '')
+            out = df_pre['Prevention'].to_json(orient='records')[1:-1].replace('["', '')
             out = obj.text_ext(out) #using the function that cleans and extracts the data from json file
                 
-            dispatcher.utter_message("Some preventive steps are: \n")
-
-            for outcome in out:
-                dispatcher.utter_message("- " + outcome + "\n")
+            
+            if len(out) ==0:
+                dispatcher.utter_message("No data avialable")
+            else:
+                dispatcher.utter_message("Some preventive steps are: \n")
+                for outcome in out:
+                    dispatcher.utter_message("- " + outcome + "\n")
 
         else:
             dispatcher.utter_message("No disease specified. Please specify a disease.")
@@ -328,25 +350,25 @@ class ActionAnwserFAQ(Action):
              tracker: Tracker,
              domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        disease =  tracker.get_slot('disease')
+        disease_slot =  tracker.get_slot('disease')
         #creating a disease identifier object which will identify the disease name from what user types 
         obj = disease_identifier()
-        disease = obj.disease_track(disease)
+        disease = obj.disease_track(disease_slot)
         
         
         #get globally saved dataframe
         global df
         
         #check for the disease name
-        df = df[df['condition'] == disease]
+        df_faq = df[df['condition'] == disease]
 
         #filter for only FAQs leaving out the null rows
         df[['FAQ','FAQ Answers']].dropna(axis=0, inplace= True)
 
-        for num in range(len(df)):
-            out1 = df['FAQ'].to_json(orient='records')[1:-1].replace('["', '')
+        for num in range(len(df_faq)):
+            out1 = df_faq['FAQ'].to_json(orient='records')[1:-1].replace('["', '')
             dispatcher.utter_message(out1)
-            out2 = df['FAQ Answers'].to_json(orient='records')[1:-1].replace('["', '')
+            out2 = df_faq['FAQ Answers'].to_json(orient='records')[1:-1].replace('["', '')
             dispatcher.utter_message(out2)
             
         return []
@@ -377,6 +399,7 @@ class text_treatment:
 
 
 class disease_identifier:
+
     def disease_track(self,disease):
         list_of_diseases = ['covid', 'diabetes', 'diarrhea', 'dengue', 'respiratory', 'heart diseases']
         global count
@@ -392,6 +415,7 @@ class disease_identifier:
             
             #loop through each character in disease name
             for char in disease:
+                
                 #check if character is present in item (which is a name of disease from list)
                 if char in item:
                     count+=1
@@ -400,5 +424,18 @@ class disease_identifier:
             if num <= count:
                 num = count
                 name = item
-                
+        print(name)        
         return name
+
+
+class ActionRestart(Action):
+
+    def name(self) -> Text:
+        return "action_restart"
+
+    async def run(self, dispatcher: CollectingDispatcher,
+             tracker: Tracker,
+             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+
+             return [Restarted()]
