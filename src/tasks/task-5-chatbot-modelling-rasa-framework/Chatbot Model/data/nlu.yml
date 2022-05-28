@@ -74,6 +74,17 @@ nlu:
     - Sure, [mark]{"entity":"Name"}
     - name is [mark]{"entity":"Name"}
     - it is [mark]{"entity":"Name"}
+    - [ron]{"entity":"Name"}
+    - [jeet]{"entity":"Name"}
+    - [mark]{"entity":"Name"}
+    - [ritav]{"entity":"Name"}
+    - [palak]{"entity":"Name"}
+    - [ron mark]{"entity":"Name"}
+    - [jeet depp]{"entity":"Name"}
+    - [amber heard]{"entity":"Name"}
+    - [brad pitt]{"entity":"Name"}
+    - [Mukesh ambani]{"entity":"Name"}
+
   
 
 - intent: Infant

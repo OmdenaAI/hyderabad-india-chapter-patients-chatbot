@@ -3,9 +3,6 @@ rules:
    steps:
     - action: utter_initial
    
-   
-  
-   
 
  - rule: submit form
    condition:

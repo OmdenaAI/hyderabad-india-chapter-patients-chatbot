@@ -92,6 +92,7 @@ stories:
    - checkpoint: check_flow_end
    - intent: Goodbye
    - action: utter_bye
+   - action: action_restart
    
 
  
