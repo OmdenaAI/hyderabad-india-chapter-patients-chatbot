@@ -1,0 +1,48 @@
+<html>
+    <body style="background-color:#f8d0b7 ;margin: 0">
+        <style>
+            .rw-conversation-container .rw-header{background-color: #ff8533;}
+            .rw-conversation-container .rw-messages-container .rw-message .rw-client{background-color: #ff8533;}
+            .rw-conversation-container .rw-messages-container .rw-message .rw-response{background-color: #fec39b;}
+            .rw-launcher{background-color: #ff8533;}
+            .rw-conversation-container .rw-messages-container{background-color: #45413e;}
+            .rw-conversation-container .rw-sender{background-color:#45413e;}
+            .rw-conversation-container .rw-sender .rw-new-message{background-color:#45413e; color: white;}
+            .rw-conversation-container .rw-sender .rw-send{background-color:#45413e;text-emphasis-color: white;}
+        </style>
+
+        <script>!(function () {
+            let e = document.createElement("script"),
+              t = document.head || document.getElementsByTagName("head")[0];
+            (e.src =
+              "https://cdn.jsdelivr.net/npm/rasa-webchat@1.x.x/lib/index.js"),
+              // Replace 1.x.x with the version that you want
+              (e.async = !0),
+              (e.onload = () => {
+                window.WebChat.default(
+                  {
+                    initPayload: '/utter_initial',
+                    customData: { language: "en" },
+                    socketUrl: "http://localhost:5005",
+                    // add other props here
+                    title: "MediBot",
+                    inputTextFieldHint: "Type a message...",
+                    showFullScreenButton: true,
+                    showMessageDate: false
+                
+                  },
+                  null
+                );
+              }),
+              t.insertBefore(e, t.firstChild);
+          })();
+          </script>
+    </body>
+
+    <div style="background-color: #ff8533;padding: 3px;box-shadow:2px 2px 8px ;">
+        <h1 style="font-family:'Trebuchet MS';font-weight: lighter; text-align: center; color: #f8f8f8;font-size: 50;padding: 50px 50px 10 px 50px;margin: 50px 50px 10 px 50px;">Rasa Powered AI HealthBot</h1>
+
+    </div>
+    <h2 style="text-align:left;font-size: 100;font-family: Lemon Jelly;text-shadow: 1px 1px 1px 1px #45413e;padding-bottom: 180px">Where <span style="color: #e17c39;font-style: italic; font-family: 'Amsterdam' ;">YOUR</span> <br> health matters!</h2>
+    <footer style="text-align: center;font-family:'Trebuchet MS';color: #e17c39">OMDENA HYDERABAD CHAPTER</footer>
+</html>

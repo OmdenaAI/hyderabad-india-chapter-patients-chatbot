@@ -97,7 +97,7 @@ responses:
     buttons:
     - title: "Infant - Age below 5 "
       payload: '/Infant{"age":"infant"}'
-    - title: "Common - Age 6-60"
+    - title: "Common/ Adult"
       payload: '/Common{"age":"adult"}'
     - title: "Old - Age 60 and above"
       payload: '/Old{"age":"old"}'
