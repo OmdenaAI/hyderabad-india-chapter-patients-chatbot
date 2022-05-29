@@ -21,3 +21,5 @@ Acute Upper Respiratory Infection - https://www.healthline.com/health/acute-uppe
 GitHub - botfront/rasa-webchat: A feature-rich chat widget for Rasa and Botfront - https://github.com/botfront/rasa-webchat
 
 Tableau for Beginners : https://www.youtube.com/watch?v=jEgVto5QME8&t=1s
+
+Active learning Using small-Text: https://github.com/webis-de/small-text
