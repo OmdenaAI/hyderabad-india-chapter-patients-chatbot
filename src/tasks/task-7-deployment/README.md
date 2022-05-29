@@ -11,12 +11,14 @@
     *   Build your Docker images with heroku.yml for deployment to Heroku.
 
 ## Deployment steps using ngrok on Telegram Channel ##
+*  Install ngrok on your system.
 *  Add the following to your credintials.yml file :
    *  Add the ***access_token*** and ***verify*** tokens from the telegram channel for the bot.
    *  Start the ngrok CLI with the command - *ngrok http 5005*** - and add the generated ***Forwarding*** token from CLI to the ***webhook_url*** placeholder in credentials.yml file.
    
 
 ## Deployment steps using Heroku and Docker  on Telegram Channel ##
+*  Install docker and docker-compose on your system.
 *  Copy the Dockerfile and docker-compose.yml file in the root directory.
 *  Copy the Dockerfile_actions in the actions directory and rename it to "Dockerfile".
 *  Put requirements.txt file in the actions dierctory, containing python libraries that you installed and used in the actions.py script. 
