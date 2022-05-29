@@ -13,3 +13,5 @@
 7. Final dashboard is publised to Tableau Public for internet users to access it. 
 
 8. Public dashboard can be views through the link : https://public.tableau.com/app/profile/sudhakar.reddy7432/viz/HealthBot/Health?publish=yes
+
+9. Tableau for Beginners : https://www.youtube.com/watch?v=jEgVto5QME8&t=1s
