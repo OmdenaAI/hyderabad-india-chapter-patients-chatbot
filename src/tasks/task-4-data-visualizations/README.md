@@ -10,4 +10,6 @@
 
 6. Used different chart models(Bar Graph, Tabluar formats, dual axis, word cloud, action filters to represent the data in understandable format.
 
-7. Final dashboard is publised to Tableau Public for internet users to access it.
+7. Final dashboard is publised to Tableau Public for internet users to access it. 
+
+8. Public dashboard can be views through the link : https://public.tableau.com/app/profile/sudhakar.reddy7432/viz/HealthBot/Health?publish=yes
