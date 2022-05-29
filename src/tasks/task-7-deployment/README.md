@@ -19,6 +19,7 @@
 ## Deployment steps using Heroku and Docker  on Telegram Channel ##
 *  Copy the Dockerfile and docker-compose.yml file in the root directory.
 *  Copy the Dockerfile_actions in the actions directory and rename it to "Dockerfile".
+*  Put requirements.txt file in the actions dierctory, containing python libraries that you installed and used in the actions.py script. 
 *  In the endpoints.yml file,change the name localhost to action_server : <br />
    &nbsp;&nbsp;&nbsp;&nbsp;***action_endpoint:***<br />
    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;***url: "http://action_server:5055/webhook"***
