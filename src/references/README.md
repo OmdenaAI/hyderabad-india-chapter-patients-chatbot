@@ -19,3 +19,5 @@ FAQs on Heart Health — Vikaspedia - https://vikaspedia.in/health/diseases/hear
 Acute Upper Respiratory Infection - https://www.healthline.com/health/acute-upper-respiratory-infection#prevention
 
 GitHub - botfront/rasa-webchat: A feature-rich chat widget for Rasa and Botfront - https://github.com/botfront/rasa-webchat
+
+Tableau for Beginners : https://www.youtube.com/watch?v=jEgVto5QME8&t=1s
