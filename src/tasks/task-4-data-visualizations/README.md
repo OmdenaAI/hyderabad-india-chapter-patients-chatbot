@@ -4,7 +4,7 @@
 
 3. Source files used were Final1.csv and Sentiment_Analysis.csv
 
-4.Created an extract of the data to fetch relavant information when uploaded to public domain.
+4. Created an extract of the data to fetch relavant information when uploaded to public domain.
 
 5. Used GIF images to represent the Health Conditions and Sentiments.
 
