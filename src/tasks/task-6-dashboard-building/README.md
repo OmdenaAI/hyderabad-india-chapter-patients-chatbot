@@ -2,11 +2,22 @@
 
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/JFwGIzCduIE/0.jpg)](https://www.youtube.com/watch?v=JFwGIzCduIE)
 
-In this Dashboard the Health Conditions helps to give an insight to the users namely patients, family members of the admitted patients and the healthcare management and staff members about the data used by our Chatbot. Inaddition, the Sentiment Analysis Dashboard helps to give an insight into patients experiences with the help of tweets on which sentiment analysis has been performed and the tweets are categorized into three categories namely: Neutral, Positive and Negative.
+The Health Conditions Dashboard helps to give an insight to the users namely patients, family members of the admitted patients, and the healthcare management and the staff members about the data used by our Chatbot. In addition, the Sentiment Analysis Dashboard helps to give an insight into patients' experiences with the help of sentiment analysis performed on tweets filtered according to relevancy of patient's experiences and these six classes which are as follows: 
+* Common Procedures
+* Emergency Care
+* Hospital Staff
+* Medical Facillity 
+* Treatment
+* Null 
+
+Sentiment analysis is performed on these tweets and according to their sentiments these tweets are classified into three categories namely: 
+* Neutral
+* Positive
+* Negative
 
 ## Completed Tasks
-* Completion of the Dashboard Health Conditions Design for Showcasing and explaining the data used by the chatbot for User Group A: the patients and the family members of patients which are in direct contact with our chatbot.
-* Completion of the Dashboard Tweets design layout to help explain the nature of the tweets which indicates the patient's experience and performing sentiment analysisa to categorize them into three categories namely Neurtal, Positive and Negative.
+* Completion of the Dashboard Health Conditions Design helps in explaining the data used by the chatbot for User Group A: the patients and the family members of patients which are in direct contact with our chatbot.
+* Completion of the Dashboard Tweets design helps to explain the nature of the tweets which indicates the patient's experience and performing sentiment analysisa to categorize them into three categories namely Neurtal, Positive and Negative.
 * Identified Solutions with the help of team members to Questions raised in the weekly meetings as deliverables and brainstormed different ideas and ways to represent data on dashbaord.
 
 ## Future Scope:
